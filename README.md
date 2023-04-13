@@ -1,4 +1,4 @@
-<img src="https://github.com/pr2tik1/pr2tik1/blob/master/IMAGE-NAME">
+<https://www.canva.com/design/DAFf8fdhz3w/PgJT4alNUzLXN7HNLTWAGw/view?utm_content=DAFf8fdhz3w&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink>
 
 ### Hello there! 👋
 I'm Athana, a beginner Python developer based in Brazil/RJ. I'm passionate about coding and love to learn new programming concepts and techniques. My current focus is on building my skills in Python and creating small projects to practice my coding abilities. When I'm not coding, I enjoy I like to read books, watch series, listen to podcasts, and play games, and am always looking for ways to connect with others who share my passion for technology. Check out my GitHub profile to see some of my early projects and contributions!
