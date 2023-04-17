@@ -1,0 +1,24 @@
+{
+  "nome": "Luiz Ot\u00e1vio 2",
+  "sobrenome": "Miranda",
+  "enderecos": [
+    {
+      "rua": "R1",
+      "numero": 32
+    },
+    {
+      "rua": "R2",
+      "numero": 55
+    }
+  ],
+  "altura": 1.8,
+  "numeros_preferidos": [
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
+  "dev": true,
+  "nada": null
+}

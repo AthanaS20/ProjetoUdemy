@@ -19,6 +19,7 @@
 # json.dump = Gera um arquivo json
 # json.load
 
+import os
 caminho_arquivo = 'C:\\Users\\user\\Desktop\\Caminho da pasta\\' #Caminho onde quer criar o arquivo
 caminho_arquivo += 'aula116.txt' #Arquivo que quer criar
 
@@ -44,4 +45,6 @@ with open(caminho_arquivo, 'w', encoding='utf8') as arquivo: #Para ajustar os ca
     arquivo.write('Linha 2\r')
     
 
-   
+# os.remove(caminho_arquivo) para remover o arquivo ou os.unlink
+# os.rename(caminho_arquivo, 'aula116-txt')
+#os.remove('aula116-txt')
