@@ -15,9 +15,9 @@ def principal():
         if comando_usuario == 'listar':
             listar_tarefas()
         if comando_usuario == 'refazer':
-            tarefas_não = lista_tarefas_desfeitas.pop()
-            lista.append(tarefas_não)
-            listar_tarefas()
+            task = lista_tarefas_desfeitas.pop()
+            lista.append(task)
+            listar_tarefas() #Não está reconhecendo comando refazer    
         if comando_usuario == 'desfazer':
             tarefas_desfeitas = lista.pop()
             lista_tarefas_desfeitas.append(tarefas_desfeitas)
