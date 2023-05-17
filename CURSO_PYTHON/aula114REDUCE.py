@@ -33,3 +33,4 @@ print('Total é', total)
 # print(total)
 
 # print(sum([p['preco'] for p in produtos]))
+
