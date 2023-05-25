@@ -1,0 +1,5 @@
+Sucess: Log realizado com sucesso. LogFileMixin
+Error: qualquer coisa LogFileMixin
+Sucess: Log realizado com sucesso. LogFileMixin
+Error: qualquer coisa LogFileMixin
+Sucess: Log realizado com sucesso. LogFileMixin
