@@ -26,7 +26,7 @@ class LogPrintMixin(Log):
 class LogFileMixin(Log):
     def _log(self, msg):
         msg_formatada = (f'{msg} {self.__class__.__name__}')
-        print('Salvando no log...')
+        print(f'Salvando no log')
         with open (LOG_FILE, 'a') as arquivo: # Criando arquivo log.txt
             arquivo.write(msg_formatada)
             arquivo.write('\n')

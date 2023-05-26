@@ -3,3 +3,7 @@ Error: qualquer coisa LogFileMixin
 Sucess: Log realizado com sucesso. LogFileMixin
 Error: qualquer coisa LogFileMixin
 Sucess: Log realizado com sucesso. LogFileMixin
+Error: Galaxy 20 está desligado. Smartphone
+Sucess: Iphone 13 está ligado. Smartphone
+Error: Galaxy 20 está desligado. Smartphone
+Sucess: Iphone 13 está ligado. Smartphone
