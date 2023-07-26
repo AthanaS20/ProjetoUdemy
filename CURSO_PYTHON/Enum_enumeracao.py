@@ -14,3 +14,28 @@
 # membro = Classe(valor), Classe['chave']
 # chave = Classe.chave.name
 # valor = Classe.chave.value
+import enum
+
+Direcoes = enum.Enum('Direcoes', ['ESQUERDA','DIREITA']) # Chamando a classe diretamente, o vscode não reconhece a typagem
+
+# fazendo dessa forma, fica mais legível
+class Direcoes(enum.Enum):
+    ESQUERDA = enum.auto() #enum.auto() enumera automaticamente 
+    DIREITA = enum.auto()
+    ACIMA = enum.auto()
+    ABAIXO = enum.auto()
+
+
+print(Direcoes, Direcoes(1), Direcoes.ESQUERDA) # membro = Classe(valor), Classe['chave']
+
+def mover(direcao: Direcoes): # Estou dizendo que o parametro é do tipo Direcoes
+    if not isinstance(direcao, Direcoes):
+        raise ValueError('Direção não encontrada')
+    
+    """direcao.DIREITA""" #Aqui o editor reconhece o tipo Direcoes
+    print(f'Movendo para {direcao.name} ({direcao.value})')
+
+mover(Direcoes.DIREITA)
+mover(Direcoes.ESQUERDA)
+mover(Direcoes.ACIMA)
+mover(Direcoes.ABAIXO)
