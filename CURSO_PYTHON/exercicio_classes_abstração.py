@@ -34,7 +34,8 @@ Banco autentica por um método.
 from abc import ABC, abstractmethod
 
 class Conta(ABC):
-    def __init__(self, conta_corrente, conta_poupanca):
+    @abstractmethod
+    def __init__(self, conta_corrente: int, conta_poupanca: int):
         self.conta_corrente = conta_corrente
         self.conta_poupanca = conta_poupanca
     
@@ -45,31 +46,50 @@ class Conta(ABC):
     def conta_poupanca(self):
         return self.conta_poupanca
 
-    @conta_corrente.setter
-    @conta_poupanca.setter
+    @conta_corrente.setter 
     @abstractmethod
     def conta_corrente(self, conta_corrente): ...
+
+    @conta_poupanca.setter
+    @abstractmethod
     def conta_poupanca(self, conta_poupanca):...
 
 class Pessoa(ABC):
     def __init__(self, nome, idade):
-        self.nome = nome
-        self.idade = idade
-    
+        self._nome = nome
+        self._idade = idade
+
+    #getter_setter abaixo
     @property
     def nome(self):
-        return self.name
+        return self._nome
+    @nome.setter
+    def nome(self, nome_usuario):
+        self._nome = nome_usuario
+    
     @property
     def idade(self):
-        return self.idade
-
-    @nome.setter
+        return self._idade
     @idade.setter
-    @abstractmethod
-    def nome(self, nome): ...
-    def idade(self, idade):...
-
+    def idade(self, idade_usuario):
+        self._idade = idade_usuario
     
+class ContaCorrente(Conta):
+    def __init__(self, conta_corrente):
+        super().__init__(conta_corrente)
+
+    @Conta.conta_corrente.setter
+    def conta_corrente(self, conta_corrente):
+        self.conta_corrente = conta_corrente
+        
+class ContaPoupanca(Conta):
+    def __init__(self, conta_poupanca):
+        super().__init__(conta_poupanca)
+    
+    @Conta.conta_poupanca.setter
+    def conta_poupanca(self, conta_poupanca):
+        self.conta_poupanca = conta_poupanca
+        
 
 
 class Banco:
@@ -80,3 +100,8 @@ class Cliente(Pessoa):
         ...
 
 
+usuario_1 = Pessoa('Athana', 23)
+usuario_1.nome = 'Carlos'
+print(usuario_1.nome)
+conta = ContaCorrente(123)
+print(conta.conta_corrente)
