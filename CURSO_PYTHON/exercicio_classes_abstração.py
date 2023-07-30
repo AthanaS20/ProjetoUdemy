@@ -34,25 +34,31 @@ Banco autentica por um método.
 from abc import ABC, abstractmethod
 
 class Conta(ABC):
-    @abstractmethod
-    def __init__(self, conta_corrente: int, conta_poupanca: int):
+    
+    def __init__(self, conta_corrente: int):
         self.conta_corrente = conta_corrente
+    
+    def __init__(self, conta_poupanca: int):
         self.conta_poupanca = conta_poupanca
     
-    @property
-    def conta_corrente(self):
-        return self.conta_corrente
-    @property
-    def conta_poupanca(self):
-        return self.conta_poupanca
-
-    @conta_corrente.setter 
     @abstractmethod
-    def conta_corrente(self, conta_corrente): ...
+    def sacar_dinheiro(self):
+        pass
+    
+    # @property
+    # def conta_corrente(self):
+    #     return self.conta_corrente
+    # @property
+    # def conta_poupanca(self):
+    #     return self.conta_poupanca
 
-    @conta_poupanca.setter
-    @abstractmethod
-    def conta_poupanca(self, conta_poupanca):...
+    # @conta_corrente.setter 
+    # @abstractmethod
+    # def conta_corrente(self, conta_corrente): ...
+
+    # @conta_poupanca.setter
+    # @abstractmethod
+    # def conta_poupanca(self, conta_poupanca):...
 
 class Pessoa(ABC):
     def __init__(self, nome, idade):
@@ -77,18 +83,21 @@ class Pessoa(ABC):
 class ContaCorrente(Conta):
     def __init__(self, conta_corrente):
         super().__init__(conta_corrente)
-
-    @Conta.conta_corrente.setter
-    def conta_corrente(self, conta_corrente):
-        self.conta_corrente = conta_corrente
-        
-class ContaPoupanca(Conta):
-    def __init__(self, conta_poupanca):
-        super().__init__(conta_poupanca)
     
-    @Conta.conta_poupanca.setter
-    def conta_poupanca(self, conta_poupanca):
-        self.conta_poupanca = conta_poupanca
+    def sacar_dinheiro(self):
+        print('Sacando dinheiro...')
+
+        
+# class ContaPoupanca(Conta):
+#     def __init__(self, conta_poupanca):
+#         super().__init__(conta_poupanca)
+    
+#     def sacar_dinheiro(self):
+#         print('Sacando dinheiro...')
+    
+#     @Conta.conta_poupanca.setter
+#     def conta_poupanca(self, conta_poupanca):
+#         self.conta_poupanca = conta_poupanca
         
 
 
@@ -104,4 +113,4 @@ usuario_1 = Pessoa('Athana', 23)
 usuario_1.nome = 'Carlos'
 print(usuario_1.nome)
 conta = ContaCorrente(123)
-print(conta.conta_corrente)
+print(conta.sacar_dinheiro())
