@@ -13,8 +13,8 @@ Banco
     Banco -> Cliente
     Banco -> Conta
 Dicas:
-Criar classe Cliente que herda da classe Pessoa (Herança)
-    Pessoa tem nome e idade (com getters)
+Criar classe Cliente que herda da classe Pessoa (Herança) - Feito
+    Pessoa tem nome e idade (com getters) - Feito
     Cliente TEM conta (Agregação da classe ContaCorrente ou ContaPoupanca)
 Criar classes ContaPoupanca e ContaCorrente que herdam de Conta
     ContaCorrente deve ter um limite extra
@@ -32,6 +32,7 @@ Só será possível sacar se passar na autenticação do banco (descrita acima)
 Banco autentica por um método.
 """
 from abc import ABC, abstractmethod
+from typing import Type
 
 class Conta(ABC):
     
@@ -43,7 +44,7 @@ class Conta(ABC):
     
     @abstractmethod
     def sacar_dinheiro(self):
-        pass
+        ...
     
     # @property
     # def conta_corrente(self):
@@ -83,17 +84,19 @@ class Pessoa(ABC):
 class ContaCorrente(Conta):
     def __init__(self, conta_corrente):
         super().__init__(conta_corrente)
-    
+
+    #Implementando metodo abstrato para sacar dinheiro
     def sacar_dinheiro(self):
         print('Sacando dinheiro...')
 
         
-# class ContaPoupanca(Conta):
-#     def __init__(self, conta_poupanca):
-#         super().__init__(conta_poupanca)
+class ContaPoupanca(Conta):
+    def __init__(self, conta_poupanca):
+        super().__init__(conta_poupanca)
     
-#     def sacar_dinheiro(self):
-#         print('Sacando dinheiro...')
+    #Implementando metodo abstrato para sacar dinheiro
+    def sacar_dinheiro(self):
+        print('Sacando dinheiro...')
     
 #     @Conta.conta_poupanca.setter
 #     def conta_poupanca(self, conta_poupanca):
@@ -106,11 +109,21 @@ class Banco:
 
 class Cliente(Pessoa):
     def __init__(self):
-        ...
+        super().__init__
+    
+    #Agregação da classe ContaCorrente
+    def cliente_conta_corrente(self, conta_corrente: Type[ContaCorrente]):
+        return conta_corrente
+    #Agregação da classe ContaPoupanca
+    def cliente_conta_poupanca(self, conta_poupanca: Type[ContaPoupanca]):
+        return conta_poupanca
+
 
 
 usuario_1 = Pessoa('Athana', 23)
 usuario_1.nome = 'Carlos'
 print(usuario_1.nome)
 conta = ContaCorrente(123)
-print(conta.sacar_dinheiro())
+poupanca = ContaPoupanca(365)
+conta.sacar_dinheiro()
+poupanca.sacar_dinheiro()
