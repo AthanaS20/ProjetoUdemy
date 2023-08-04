@@ -15,8 +15,8 @@ Banco
 Dicas:
 Criar classe Cliente que herda da classe Pessoa (Herança) - Feito
     Pessoa tem nome e idade (com getters) - Feito
-    Cliente TEM conta (Agregação da classe ContaCorrente ou ContaPoupanca)
-Criar classes ContaPoupanca e ContaCorrente que herdam de Conta
+    Cliente TEM conta (Agregação da classe ContaCorrente ou ContaPoupanca) - Feito
+Criar classes ContaPoupanca e ContaCorrente que herdam de Conta - Feito
     ContaCorrente deve ter um limite extra
     Contas têm agência, número da conta e saldo
     Contas devem ter método para depósito
@@ -32,7 +32,7 @@ Só será possível sacar se passar na autenticação do banco (descrita acima)
 Banco autentica por um método.
 """
 from abc import ABC, abstractmethod
-from typing import Type
+
 
 class Conta(ABC):
     
@@ -84,6 +84,9 @@ class Pessoa(ABC):
 class ContaCorrente(Conta):
     def __init__(self, conta_corrente):
         super().__init__(conta_corrente)
+    
+    def agencia(self, numero):
+        ...
 
     #Implementando metodo abstrato para sacar dinheiro
     def sacar_dinheiro(self):
@@ -108,15 +111,10 @@ class Banco:
     pass
 
 class Cliente(Pessoa):
-    def __init__(self):
-        super().__init__
+    def __init__(self, nome, idade):
+        super().__init__(nome, idade)
     
-    #Agregação da classe ContaCorrente
-    def cliente_conta_corrente(self, conta_corrente: Type[ContaCorrente]):
-        return conta_corrente
-    #Agregação da classe ContaPoupanca
-    def cliente_conta_poupanca(self, conta_poupanca: Type[ContaPoupanca]):
-        return conta_poupanca
+
 
 
 
@@ -127,3 +125,6 @@ conta = ContaCorrente(123)
 poupanca = ContaPoupanca(365)
 conta.sacar_dinheiro()
 poupanca.sacar_dinheiro()
+cliente1 = Cliente('Adriana', 23)
+cliente1.corrente = conta #Agregação conta corrente
+print(cliente1.nome, cliente1.idade, cliente1.corrente)
