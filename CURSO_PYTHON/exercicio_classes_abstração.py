@@ -21,7 +21,7 @@ Criar classes ContaPoupanca e ContaCorrente que herdam de Conta - Feito
     Contas têm agência, número da conta e saldo
     Contas devem ter método para depósito
     Conta (super classe) deve ter o método sacar abstrato (Abstração e
-    polimorfismo - as subclasses que implementam o método sacar)
+    polimorfismo - as subclasses que implementam o método sacar) - Feito
 Criar classe Banco para AGREGAR classes de clientes e de contas (Agregação)
 Banco será responsável autenticar o cliente e as contas da seguinte maneira:
     Banco tem contas e clentes (Agregação)
@@ -85,8 +85,12 @@ class ContaCorrente(Conta):
     def __init__(self, conta_corrente):
         super().__init__(conta_corrente)
     
-    def agencia(self, numero):
-        ...
+    #Metodo para depósito
+    def deposito(self, valor):
+        if self.deposito:
+            print(f'Você depositou {valor}R$ na sua conta.')
+
+    
 
     #Implementando metodo abstrato para sacar dinheiro
     def sacar_dinheiro(self):
@@ -128,3 +132,4 @@ poupanca.sacar_dinheiro()
 cliente1 = Cliente('Adriana', 23)
 cliente1.corrente = conta #Agregação conta corrente
 print(cliente1.nome, cliente1.idade, cliente1.corrente)
+conta.deposito(23)
