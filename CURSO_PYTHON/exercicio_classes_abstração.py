@@ -19,7 +19,7 @@ Criar classe Cliente que herda da classe Pessoa (Herança) - Feito
 Criar classes ContaPoupanca e ContaCorrente que herdam de Conta - Feito
     ContaCorrente deve ter um limite extra
     Contas têm agência, número da conta e saldo
-    Contas devem ter método para depósito
+    Contas devem ter método para depósito - Feito
     Conta (super classe) deve ter o método sacar abstrato (Abstração e
     polimorfismo - as subclasses que implementam o método sacar) - Feito
 Criar classe Banco para AGREGAR classes de clientes e de contas (Agregação)
@@ -36,11 +36,15 @@ from abc import ABC, abstractmethod
 
 class Conta(ABC):
     
-    def __init__(self, conta_corrente: int):
+    def __init__(self, conta_corrente: int, agencia, saldo):
         self.conta_corrente = conta_corrente
+        self.agencia = agencia
+        self.saldo = saldo
     
-    def __init__(self, conta_poupanca: int):
+    def __init__(self, conta_poupanca: int, agencia, saldo):
         self.conta_poupanca = conta_poupanca
+        self.agencia = agencia
+        self.saldo = saldo
     
     @abstractmethod
     def sacar_dinheiro(self):
@@ -82,13 +86,17 @@ class Pessoa(ABC):
         self._idade = idade_usuario
     
 class ContaCorrente(Conta):
-    def __init__(self, conta_corrente):
-        super().__init__(conta_corrente)
+    def __init__(self, conta_corrente, saldo):
+        super().__init__(conta_corrente, saldo)
     
     #Metodo para depósito
     def deposito(self, valor):
         if self.deposito:
-            print(f'Você depositou {valor}R$ na sua conta.')
+            print(f'Você depositou {valor} R$ na sua conta.')
+    
+    def limite_extra(saldo):
+        if saldo <= 0:
+            return (f'Você tem limite extra e pode sacar {saldo + 100} R$.') 
 
     
 
@@ -104,6 +112,8 @@ class ContaPoupanca(Conta):
     #Implementando metodo abstrato para sacar dinheiro
     def sacar_dinheiro(self):
         print('Sacando dinheiro...')
+
+   
     
 #     @Conta.conta_poupanca.setter
 #     def conta_poupanca(self, conta_poupanca):
@@ -125,7 +135,7 @@ class Cliente(Pessoa):
 usuario_1 = Pessoa('Athana', 23)
 usuario_1.nome = 'Carlos'
 print(usuario_1.nome)
-conta = ContaCorrente(123)
+conta = ContaCorrente(123, 0)
 poupanca = ContaPoupanca(365)
 conta.sacar_dinheiro()
 poupanca.sacar_dinheiro()
@@ -133,3 +143,4 @@ cliente1 = Cliente('Adriana', 23)
 cliente1.corrente = conta #Agregação conta corrente
 print(cliente1.nome, cliente1.idade, cliente1.corrente)
 conta.deposito(23)
+conta.limite_extra(0)
