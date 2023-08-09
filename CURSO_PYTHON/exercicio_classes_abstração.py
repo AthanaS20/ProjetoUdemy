@@ -36,18 +36,18 @@ from abc import ABC, abstractmethod
 
 class Conta(ABC):
     
-    def __init__(self, conta_corrente: int, agencia, saldo):
+    def __init__(self, conta_corrente: int, agencia: int, saldo: float):
         self.conta_corrente = conta_corrente
         self.agencia = agencia
         self.saldo = saldo
     
-    def __init__(self, conta_poupanca: int, agencia, saldo):
+    def __init__(self, conta_poupanca: int, agencia: int, saldo: int):
         self.conta_poupanca = conta_poupanca
         self.agencia = agencia
         self.saldo = saldo
     
     @abstractmethod
-    def sacar_dinheiro(self):
+    def sacar_dinheiro(self, valor: float) -> None:
         ...
     
     # @property
@@ -65,8 +65,8 @@ class Conta(ABC):
     # @abstractmethod
     # def conta_poupanca(self, conta_poupanca):...
 
-class Pessoa(ABC):
-    def __init__(self, nome, idade):
+class Pessoa:
+    def __init__(self, nome: str, idade: int):
         self._nome = nome
         self._idade = idade
 
@@ -86,7 +86,7 @@ class Pessoa(ABC):
         self._idade = idade_usuario
     
 class ContaCorrente(Conta):
-    def __init__(self, conta_corrente, saldo):
+    def __init__(self, conta_corrente: int, saldo: float):
         super().__init__(conta_corrente, saldo)
     
     #Metodo para depósito
