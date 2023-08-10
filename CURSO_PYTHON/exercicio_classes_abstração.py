@@ -50,21 +50,6 @@ class Conta(ABC):
     def sacar_dinheiro(self, valor: float) -> None:
         ...
     
-    # @property
-    # def conta_corrente(self):
-    #     return self.conta_corrente
-    # @property
-    # def conta_poupanca(self):
-    #     return self.conta_poupanca
-
-    # @conta_corrente.setter 
-    # @abstractmethod
-    # def conta_corrente(self, conta_corrente): ...
-
-    # @conta_poupanca.setter
-    # @abstractmethod
-    # def conta_poupanca(self, conta_poupanca):...
-
 class Pessoa:
     def __init__(self, nome: str, idade: int):
         self._nome = nome
