@@ -36,16 +36,9 @@ from abc import ABC, abstractmethod
 
 class Conta(ABC):
     
-    def __init__(self, conta_corrente: int, agencia: int, saldo: float):
-        self.conta_corrente = conta_corrente
-        self.agencia = agencia
-        self.saldo = saldo
-    
-    def __init__(self, conta_poupanca: int, agencia: int, saldo: int):
-        self.conta_poupanca = conta_poupanca
-        self.agencia = agencia
-        self.saldo = saldo
-    
+    def __init__(self):
+        ...
+           
     @abstractmethod
     def sacar_dinheiro(self, valor: float) -> None:
         ...
@@ -71,43 +64,52 @@ class Pessoa:
         self._idade = idade_usuario
     
 class ContaCorrente(Conta):
-    def __init__(self, conta_corrente: int, saldo: float):
-        super().__init__(conta_corrente, saldo)
+    def __init__(self, agencia: int, numero_conta: int, saldo: float):
+        self.agencia = agencia
+        self.numero_conta = numero_conta
+        self.saldo = saldo
     
     #Metodo para depósito
     def deposito(self, valor):
         if self.deposito:
-            print(f'Você depositou {valor} R$ na sua conta.')
+            return self.saldo + self.deposito
     
-    def limite_extra(saldo):
-        if saldo <= 0:
-            return (f'Você tem limite extra e pode sacar {saldo + 100} R$.') 
 
-    
+    def limite_extra(self, saldo):
+        if self.saldo <= 0:
+            print(f'Você tem 100,00R$ de limite extra.')
+            return saldo + 100
+   
 
     #Implementando metodo abstrato para sacar dinheiro
-    def sacar_dinheiro(self):
-        print('Sacando dinheiro...')
+    def sacar_dinheiro(self, valor):
+        if self.valor < self.saldo:
+            print('Saque negado, você não tem saldo suficiente')
+        else:
+            print(f'Saque de {self.valor} R$ realizado.')    
+        
 
         
 class ContaPoupanca(Conta):
-    def __init__(self, conta_poupanca):
-        super().__init__(conta_poupanca)
+    def __init__(self, agencia: int, numero_conta: int, saldo: float):
+        elf.agencia = agencia
+        self.numero_conta = numero_conta
+        self.saldo = saldo
     
     #Implementando metodo abstrato para sacar dinheiro
-    def sacar_dinheiro(self):
-        print('Sacando dinheiro...')
-
-   
-    
-#     @Conta.conta_poupanca.setter
-#     def conta_poupanca(self, conta_poupanca):
-#         self.conta_poupanca = conta_poupanca
+    def sacar_dinheiro(self, valor):
+        if self.valor < self.saldo:
+            print('Saque negado, você não tem saldo suficiente')
+        
+        else:
+            print(f'Saque de {self.valor} R$ realizado.')
         
 
 
 class Banco:
-    pass
+    def autenticar_agencia(self):
+        ...
+        
 
 class Cliente(Pessoa):
     def __init__(self, nome, idade):
