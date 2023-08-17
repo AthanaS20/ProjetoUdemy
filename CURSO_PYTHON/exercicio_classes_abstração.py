@@ -92,7 +92,7 @@ class ContaCorrente(Conta):
         
 class ContaPoupanca(Conta):
     def __init__(self, agencia: int, numero_conta: int, saldo: float):
-        elf.agencia = agencia
+        self.agencia = agencia
         self.numero_conta = numero_conta
         self.saldo = saldo
     
