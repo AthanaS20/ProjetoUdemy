@@ -36,8 +36,10 @@ from abc import ABC, abstractmethod
 
 class Conta(ABC):
     
-    def __init__(self):
-        ...
+    def __init__(self, agencia: int, numero_conta: int, saldo: float):
+        self.agencia = agencia
+        self.numero_conta = numero_conta
+        self.saldo = saldo
            
     @abstractmethod
     def sacar_dinheiro(self, valor: float) -> None:
@@ -65,14 +67,15 @@ class Pessoa:
     
 class ContaCorrente(Conta):
     def __init__(self, agencia: int, numero_conta: int, saldo: float):
-        self.agencia = agencia
-        self.numero_conta = numero_conta
-        self.saldo = saldo
-    
+        super().__init__(agencia, numero_conta, saldo)
+
     #Metodo para depósito
     def deposito(self, valor):
-        if self.deposito:
-            return self.saldo + self.deposito
+        valor_total =  self.saldo + valor
+        print(f'Valor de {valor} R$ depositado.')
+        print(f'Seu saldo agora é de {valor_total} R$.')
+        return valor_total
+        
     
 
     def limite_extra(self, saldo):
@@ -98,11 +101,11 @@ class ContaPoupanca(Conta):
     
     #Implementando metodo abstrato para sacar dinheiro
     def sacar_dinheiro(self, valor):
-        if self.valor < self.saldo:
+        if valor < self.saldo:
             print('Saque negado, você não tem saldo suficiente')
         
         else:
-            print(f'Saque de {self.valor} R$ realizado.')
+            print(f'Saque de {valor} R$ realizado.')
         
 
 
@@ -124,10 +127,4 @@ usuario_1.nome = 'Carlos'
 print(usuario_1.nome)
 conta = ContaCorrente(123, 0)
 poupanca = ContaPoupanca(365)
-conta.sacar_dinheiro()
-poupanca.sacar_dinheiro()
-cliente1 = Cliente('Adriana', 23)
-cliente1.corrente = conta #Agregação conta corrente
-print(cliente1.nome, cliente1.idade, cliente1.corrente)
-conta.deposito(23)
-conta.limite_extra(0)
+
