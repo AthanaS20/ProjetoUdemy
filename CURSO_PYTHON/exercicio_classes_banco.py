@@ -86,10 +86,10 @@ class ContaCorrente(Conta):
 
     #Implementando metodo abstrato para sacar dinheiro
     def sacar_dinheiro(self, valor):
-        if self.valor < self.saldo:
+        if self.saldo == 0:
             print('Saque negado, você não tem saldo suficiente')
         else:
-            print(f'Saque de {self.valor} R$ realizado.')    
+            print(f'Saque de {valor} R$ realizado.')    
         
 
         
@@ -101,11 +101,19 @@ class ContaPoupanca(Conta):
     
     #Implementando metodo abstrato para sacar dinheiro
     def sacar_dinheiro(self, valor):
-        if valor < self.saldo:
-            print('Saque negado, você não tem saldo suficiente')
+        saldo_atualizado = self.saldo - valor
+
+        if saldo_atualizado >= 0:
+            saldo_atualizado -= valor
+            print(f'Seu saldo atual é {saldo_atualizado} R$.')
+            print(f'Saque de {valor} R$ realizado.')
+            return self.saldo
+            
         
         else:
-            print(f'Saque de {valor} R$ realizado.')
+            print('Saque negado, você não tem saldo suficiente')
+            
+            
         
 
 
@@ -125,6 +133,7 @@ class Cliente(Pessoa):
 usuario_1 = Pessoa('Athana', 23)
 usuario_1.nome = 'Carlos'
 print(usuario_1.nome)
-conta = ContaCorrente(123, 0)
-poupanca = ContaPoupanca(365)
-
+conta = ContaCorrente(123, 0, 300)
+poupanca = ContaPoupanca(365, 333, 500)
+print(conta.saldo)
+conta.sacar_dinheiro(500)
