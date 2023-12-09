@@ -1,15 +1,9 @@
-def is_leap(year):
-    leap = False
-    
-    # Write your logic here
-    if year % 4 == 0:
-       return leap
-    else:
-        if year % 400 == 0:
-            return leap
+n = 6
 
+for i in range(n):
+   for j in range(i):
+        print(i, end=' ')
+ 
     
-    return leap
-
-year = int(input())
-print(is_leap(year))
+    
+    
