@@ -35,3 +35,10 @@ with ZipFile(CAMINHO_COMPACTADO, 'w') as zip:
         for file in files:
             print(file)
             zip.write(os.path.join(root, file), file)
+
+with ZipFile(CAMINHO_COMPACTADO, 'r') as zip:
+    for arquivo in zip.namelist():
+        print(arquivo)
+
+with ZipFile(CAMINHO_COMPACTADO, 'r') as zip:
+    zip.extractall(CAMINHO_DESCOMPACTADO)
