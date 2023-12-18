@@ -16,4 +16,13 @@ response = requests.get(url)
 raw_html = response.text
 parserd_html = BeautifulSoup(raw_html, 'html.parser')
 
-print(parserd_html.title.text)
+# print(parserd_html.h2.text)
+
+top_jobs_heading = parserd_html.select_one('#intro > div > div > article > h2')
+
+if top_jobs_heading is not None:
+    article = top_jobs_heading.parent
+
+    if article is not None:
+        for p in article.select('p'):
+            print(p.text)
