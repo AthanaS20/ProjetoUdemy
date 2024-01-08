@@ -9,7 +9,7 @@
 # pip install pypdf2
 
 from pathlib import Path
-from PyPDF2 import PdfReader
+from PyPDF2 import PdfReader, PdfWriter
 
 PASTA_RAIZ = Path(__file__).parent
 CAMINHO_PDF_ORIGINAL = PASTA_RAIZ / 'pdfs_originais'
@@ -25,5 +25,17 @@ imagem_1 = page_1.images[0]
 # print(page_1.extract_text()) #para extrair texto do pdf
 # print(page_1.images[0])
 
-with open(PASTA_NOVA / imagem_1.name, 'wb') as imagem: # para salvar a imagem em uma pasta
-    imagem.write(imagem_1.data)
+# with open(PASTA_NOVA / imagem_1.name, 'wb') as imagem: # para salvar a imagem em uma pasta
+#     imagem.write(imagem_1.data)
+
+writer = PdfWriter()
+writer.add_page(page_1)
+
+# with open(PASTA_NOVA / 'page_1.pdf', 'wb') as arquivo:
+#     writer.write(arquivo)
+
+for i, page in enumerate(reader.pages):
+    writer = PdfWriter()
+    with open(PASTA_NOVA / f'page{i}.pdf', 'wb') as arquivo:
+        writer.add_page(page)
+        writer.write(arquivo)  # type: ignore
