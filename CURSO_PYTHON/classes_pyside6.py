@@ -22,18 +22,12 @@ class MyWindow(QMainWindow):
         self.button2 = self.make_button('Text of button 2')
         self.button3 = self.make_button('Text of button 3')
 
-      
-        
-
         self.layout = QGridLayout()
         self.central_widget.setLayout(self.layout)
         self.layout.addWidget(self.button, 1, 1, 1, 1)
         self.layout.addWidget(self.button2, 1, 2, 1, 1)
-        self.layout.addWidget(self.button, 1, 3, 1, 2)
-        self.layout = QGridLayout()
-        self.central_widget.setLayout(self.layout)
-        self.layout.addWidget(self.button, 1, 1)
-        self.layout.addWidget(self.button2, 1, 2) 
+        self.layout.addWidget(self.button3, 1, 3, 1, 2)
+        
 
         #status bar
         self.status_bar = self.statusBar()
@@ -63,6 +57,10 @@ class MyWindow(QMainWindow):
         btn = QPushButton(text)
         btn.setStyleSheet('font-size: 30px')
         return btn
+
+    # def make_grid_layout(self, number):
+    #     grid = QGridLayout(number)
+    #     grid.setLayout
 
 
 if __name__ == '__main__':
