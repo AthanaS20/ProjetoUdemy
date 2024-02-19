@@ -4,7 +4,7 @@ from main_window import (MainWindow)
 from style import setupTheme
 from info import Info
 from display import Display
-from buttons import Button
+from buttons import Button, ButtonsGrid
 
 from PySide6.QtGui import QIcon
 from PySide6.QtWidgets import (QApplication,
@@ -35,9 +35,16 @@ if __name__ == '__main__':
     display.setPlaceholderText('Digite algo')
     window.addWidgetToVLayout(display)
 
+    # Grid
+    buttons_grid = ButtonsGrid()
+    window.vLayout.addLayout(buttons_grid)
+
     #Buttons
     button = Button('texto do botão')
-    window.addWidgetToVLayout(button)
+    buttons_grid.addWidget(button, 0, 0)
+
+    button = Button('texto do botão')
+    buttons_grid.addWidget(button, 0, 1)
 
     #label
     label = QLabel()
