@@ -11,7 +11,7 @@ class Button(QPushButton):
         font.setPixelSize(MEDIUM_FONT_SIZE)
         self.setMinimumSize(75, 75)
         self.setFont(font)
-        self.setProperty('cssClass', 'specialButton')
+        
 
 class ButtonsGrid(QGridLayout):
     def __init__(self, *args, **kwargs):
@@ -28,8 +28,14 @@ class ButtonsGrid(QGridLayout):
         self._makeGrid() # assim que a classe for chamada no main, ele executa esse metodo.
 
     def _makeGrid(self):
-        for row in self._gridMask:
-            print(row)
+        for i, row in enumerate(self._gridMask):
+            for j, b_text in enumerate(row):
+                button = Button(b_text)
+
+                if button not in '0123456789.':
+                    button.setProperty('cssClass', 'specialButton')
+                
+                self.addWidget(button, i, j)
 
     
     

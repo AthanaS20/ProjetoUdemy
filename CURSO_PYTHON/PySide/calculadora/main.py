@@ -40,11 +40,10 @@ if __name__ == '__main__':
     window.vLayout.addLayout(buttons_grid)
 
     #Buttons
-    button = Button('texto do botão')
-    buttons_grid.addWidget(button, 0, 0)
+    button = Button()
+    # buttons_grid.addWidget(button)
 
-    button = Button('texto do botão')
-    buttons_grid.addWidget(button, 0, 1)
+    
 
     #label
     label = QLabel()
